@@ -19,6 +19,10 @@ import {
   deleteDoc,
   getDoc,
 } from "firebase/firestore";
+// import { ThemeContextProvider } from "./ThemeContextProvider";
+// import ThemeSwitcher from "./ThemeSwitcher";
+// import { useTheme } from "@mui/material/styles";
+// TODO: figure out how to get the themeing working
 
 const style = {
   position: "absolute",
@@ -36,6 +40,7 @@ const style = {
 };
 
 export default function Home() {
+  //const theme = useTheme();
   const [inventory, setInventory] = useState([]);
   const [open, setOpen] = useState(false);
   const [itemName, setItemName] = useState("");
