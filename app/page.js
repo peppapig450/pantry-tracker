@@ -12,7 +12,7 @@ import {
 import { firestore } from "@/firebase";
 import {
   collection,
-  docs,
+  doc,
   getDocs,
   query,
   setDoc,
