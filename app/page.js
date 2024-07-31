@@ -36,6 +36,10 @@ const style = {
 };
 
 export default function Home() {
+  const [inventory, setInvetory] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [itemName, setItemName] = useState("");
+
   // Add component logic here
   return (
     <Box>
