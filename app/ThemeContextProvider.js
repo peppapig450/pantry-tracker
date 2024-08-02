@@ -1,15 +1,19 @@
-import React, { createContext, useState, useMemo } from "react";
+import React, { createContext, useState, useMemo, useMe } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { lightTheme, darkTheme } from "./theme";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 // Creates a React context for theme-related values
 export const ThemeContext = createContext();
 
 // Provides theme context to child components
 export const ThemeContextProvider = ({ children }) => {
+  // Use useMediaQuery to detect system preference for dark mode
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
   // State to manage the current theme (light or dark)
-  const [theme, setTheme] = useState("light"); // TODO: use system default
+  const [theme, setTheme] = useState(prefersDarkMode ? "dark" : "light");
 
   // Memoized function to determine the active theme configuration based on the theme state
   const themeConfig = useMemo(
