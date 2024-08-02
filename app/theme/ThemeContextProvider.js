@@ -1,11 +1,45 @@
 import React, { createContext, useState, useMemo, useMe } from "react";
-import { ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
-import { lightTheme, darkTheme } from "./theme";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { teal } from "@mui/material/colors";
+import { sharedTypography } from "../styles/TypographyStyles";
 
 // Creates a React context for theme-related values
 export const ThemeContext = createContext();
+
+// Handle the switch between custom light and dark modes.
+const getDesignTokens = (mode) => ({
+  palette: {
+    mode,
+    ...(mode === "light"
+      ? {
+          // Palette values for light mode
+          primary: {
+            main: teal[500],
+          },
+          secondary: {
+            main: "#34C759",
+          },
+          background: {
+            default: "#F2F2F2",
+          },
+        }
+      : {
+          // Palette values for dark mode
+          primary: {
+            main: teal[500],
+          },
+          secondary: {
+            main: "#34C759",
+          },
+          background: {
+            default: "#303030",
+          },
+        }),
+  },
+  typography: sharedTypography,
+});
 
 // Provides theme context to child components
 export default function ThemeContextProvider({ children }) {
@@ -17,7 +51,7 @@ export default function ThemeContextProvider({ children }) {
 
   // Memoized function to determine the active theme configuration based on the theme state
   const themeConfig = useMemo(
-    () => (theme === "light" ? lightTheme : darkTheme),
+    () => createTheme(getDesignTokens(theme)),
     [theme]
   );
 
