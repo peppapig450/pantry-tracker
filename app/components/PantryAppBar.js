@@ -132,20 +132,22 @@ export default function PrimarySearchPantryAppBar({
       <MenuItem>
         <ThemeSwitcherMenuItem />
       </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          {/* TODO: integrate this with firebase to display notifications for account 
-            Use 17 as a placeholder for now. */}
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+      {/*
+        <MenuItem>
+          <IconButton
+            size="large"
+            aria-label="show 17 new notifications"
+            color="inherit"
+          >
+          // TODO: integrate this with firebase to display notifications for account
+          // Use 17 as a placeholder for now.
+            <Badge badgeContent={17} color="error">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <p>Notifications</p>
+        </MenuItem>
+      */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -197,6 +199,7 @@ export default function PrimarySearchPantryAppBar({
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <ThemeSwitcherButton />
+            {/* 
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
@@ -206,6 +209,7 @@ export default function PrimarySearchPantryAppBar({
                 <NotificationsIcon />
               </Badge>
             </IconButton>
+            */}
             <IconButton
               size="large"
               edge="end"
