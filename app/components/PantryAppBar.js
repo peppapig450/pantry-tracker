@@ -56,6 +56,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const WideBodyAppBar = styled(AppBar)(({ theme }) => ({
+  width: "100%",
+}));
+
 export default function PrimarySearchPantryAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -150,7 +154,7 @@ export default function PrimarySearchPantryAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <WideBodyAppBar position="static">
         <Toolbar>
           {/* hamburger menu on the far left */}
           <IconButton
@@ -218,7 +222,7 @@ export default function PrimarySearchPantryAppBar() {
             </IconButton>
           </Box>
         </Toolbar>
-      </AppBar>
+      </WideBodyAppBar>
       {renderMobileMenu}
       {renderMenu}
     </Box>
