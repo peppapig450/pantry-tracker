@@ -14,7 +14,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import ThemeSwitcher from "./ThemeSwitcher";
+import { ThemeSwitcherButton, ThemeSwitcherMenuItem } from "./ThemeSwitcher";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -97,6 +97,7 @@ export default function PrimarySearchPantryAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
+      <MenuItem onClick={handleMenuClose}>Theme Toggle</MenuItem>
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
@@ -119,6 +120,9 @@ export default function PrimarySearchPantryAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <MenuItem>
+        <ThemeSwitcherMenuItem />
+      </MenuItem>
       <MenuItem>
         <IconButton
           size="large"
@@ -182,7 +186,7 @@ export default function PrimarySearchPantryAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <ThemeSwitcher />
+            <ThemeSwitcherButton />
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
