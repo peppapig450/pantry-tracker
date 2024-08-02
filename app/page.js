@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Stack,
@@ -40,6 +40,8 @@ const style = {
 
 export default function Home() {
   const [inventory, setInventory] = useState([]);
+  const [filteredInventory, setFilteredInventory] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [itemName, setItemName] = useState("");
   const theme = useTheme();
@@ -53,11 +55,25 @@ export default function Home() {
       inventoryList.push({ name: doc.id, ...doc.data() });
     });
     setInventory(inventoryList);
+    setFilteredInventory(inventoryList); // XXX: only load when we search ?
   };
 
   useEffect(() => {
     updateInventory();
   }, []);
+
+  useEffect(() => {
+    // Filter inventory based on search query
+    if (searchQuery === "") {
+      setFilteredInventory(inventory);
+    } else {
+      setFilteredInventory(
+        inventory.filter(({ name }) =>
+          name.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      );
+    }
+  }, [searchQuery, inventory]);
 
   const addItem = async (item) => {
     const docRef = doc(collection(firestore, "inventory"), item);
@@ -91,7 +107,10 @@ export default function Home() {
   // Add component logic here
   return (
     <>
-      <PrimarySearchPantryAppBar />
+      <PrimarySearchPantryAppBar
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
       <Box
         width="100vw"
         height="100vh"
@@ -151,7 +170,7 @@ export default function Home() {
             </Typography>
           </Box>
           <Stack width="800px" height="300px" spacing={2} overflow={"auto"}>
-            {inventory.map(({ name, quantity }) => (
+            {filteredInventory.map(({ name, quantity }) => (
               <Box
                 key={name}
                 width="100%"
