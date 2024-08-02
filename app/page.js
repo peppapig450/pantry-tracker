@@ -91,6 +91,7 @@ export default function Home() {
   // Add component logic here
   return (
     <ThemeContextProvider>
+      <PrimarySearchPantryAppBar />
       <Box
         width="100vw"
         height="100vh"
@@ -101,7 +102,6 @@ export default function Home() {
         gap={2}
         bgcolor={theme.palette.background.default}
       >
-        <PrimarySearchPantryAppBar />
         <Modal
           open={open}
           onClose={handleClose}
