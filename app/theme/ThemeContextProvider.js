@@ -1,12 +1,23 @@
-import React, { createContext, useState, useMemo, useMe } from "react";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+"use client";
+
+import React, { createContext, useState, useMemo, useCallback } from "react";
+import {
+  createTheme,
+  ThemeProvider,
+  responsiveFontSizes,
+} from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { teal } from "@mui/material/colors";
 import { sharedTypography } from "../styles/TypographyStyles";
 
 // Creates a React context for theme-related values
-export const ThemeContext = createContext();
+export const ThemeContext = createContext({
+  theme: null,
+  toggleTheme: () => {},
+});
+
+const useTheme = () => useContext(ThemeContext);
 
 // Handle the switch between custom light and dark modes.
 const getDesignTokens = (mode) => ({
@@ -42,7 +53,7 @@ const getDesignTokens = (mode) => ({
 });
 
 // Provides theme context to child components
-export default function ThemeContextProvider({ children }) {
+export function ThemeContextProvider({ children }) {
   // Use useMediaQuery to detect system preference for dark mode
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
@@ -50,15 +61,15 @@ export default function ThemeContextProvider({ children }) {
   const [theme, setTheme] = useState(prefersDarkMode ? "dark" : "light");
 
   // Memoized function to determine the active theme configuration based on the theme state
-  const themeConfig = useMemo(
-    () => createTheme(getDesignTokens(theme)),
-    [theme]
-  );
+  const themeConfig = useMemo(() => {
+    const baseTheme = createTheme(getDesignTokens(theme));
+    return responsiveFontSizes(baseTheme);
+  }, [theme]);
 
   // Function to toggle the theme between light and dark
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  };
+  }, []);
 
   return (
     // Provides theme and toggleTheme function to child components through context
