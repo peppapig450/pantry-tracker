@@ -90,7 +90,7 @@ export default function Home() {
 
   // Add component logic here
   return (
-    <ThemeContextProvider>
+    <>
       <PrimarySearchPantryAppBar />
       <Box
         width="100vw"
@@ -176,6 +176,6 @@ export default function Home() {
           </Stack>
         </Box>
       </Box>
-    </ThemeContextProvider>
+    </>
   );
 }
