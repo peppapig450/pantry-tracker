@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+import { teal } from "@mui/material/colors";
 
 // TODO: possibly add more font options like lineHeight letterSpacing etc..
 
@@ -35,7 +36,7 @@ const darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#009688",
+      main: teal[500],
     },
     secondary: {
       main: "#34C759",
@@ -52,7 +53,7 @@ const lightTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#009688",
+      main: teal[500],
     },
     secondary: {
       main: "#34C759",
