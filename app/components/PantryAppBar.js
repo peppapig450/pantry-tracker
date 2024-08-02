@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { styled, alpha } from "@mui/material/styles";
+import { styled, alpha, useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -60,6 +60,8 @@ export default function PrimarySearchPantryAppBar({
   searchQuery,
   setSearchQuery,
 }) {
+  const theme = useTheme();
+
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
@@ -198,7 +200,7 @@ export default function PrimarySearchPantryAppBar({
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
-              color="inherit"
+              color="secondary"
             >
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />
