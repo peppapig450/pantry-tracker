@@ -8,7 +8,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 export const ThemeContext = createContext();
 
 // Provides theme context to child components
-export const ThemeContextProvider = ({ children }) => {
+export default function ThemeContextProvider({ children }) {
   // Use useMediaQuery to detect system preference for dark mode
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
@@ -35,4 +35,4 @@ export const ThemeContextProvider = ({ children }) => {
       </ThemeProvider>
     </ThemeContext.Provider>
   );
-};
+}
