@@ -8,6 +8,7 @@ import {
   Button,
   Modal,
   TextField,
+  useTheme,
 } from "@mui/material";
 import { firestore } from "@/firebase";
 import {
@@ -21,7 +22,6 @@ import {
 } from "firebase/firestore";
 import PrimarySearchPantryAppBar from "./components/PantryAppBar";
 import ThemeContextProvider from "./theme/ThemeContextProvider";
-import useTheme from "@mui/material/styles/useTheme";
 
 const style = {
   position: "absolute",
