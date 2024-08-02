@@ -1,29 +1,33 @@
+import { Raleway, Playfair_Display } from "next/font/google";
+
+const raleway = Raleway({ subsets: ["latin"] });
+const playfairDisplay = Playfair_Display({ subsets: ["latin"] });
+
 // Base typography settings for default font
-// TODO: figure out how to install Raleway
 const baseTypography = {
-  fontFamily: "Raleway, Arial, sans-serif",
+  fontFamily: raleway.style.fontFamily,
 };
 
 // Shared typography for headers
 const sharedTypography = {
   ...baseTypography,
   h1: {
-    fontFamily: "Playfair Display, serif",
+    fontFamily: playfairDisplay.style.fontFamily,
   },
   h2: {
-    fontFamily: "Playfair Display, serif",
+    fontFamily: playfairDisplay.style.fontFamily,
   },
   h3: {
-    fontFamily: "Playfair Display, serif",
+    fontFamily: playfairDisplay.style.fontFamily,
   },
   h4: {
-    fontFamily: "Playfair Display, serif",
+    fontFamily: playfairDisplay.style.fontFamily,
   },
   h5: {
-    fontFamily: "Playfair Display, serif",
+    fontFamily: playfairDisplay.style.fontFamily,
   },
   h6: {
-    fontFamily: "Playfair Display, serif",
+    fontFamily: playfairDisplay.style.fontFamily,
   },
 };
 
