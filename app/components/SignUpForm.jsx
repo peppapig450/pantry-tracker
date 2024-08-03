@@ -1,18 +1,15 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { Box, Button, Typography, TextField, useTheme } from "@mui/material";
+import { Box, Button, Typography, TextField } from "@mui/material";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../../firebase";
-import { ThemeContext } from "../theme/ThemeContextProvider";
 import GoogleIcon from "@mui/icons-material/Google";
 
-const SignUpForm = () => {
-  const theme = useTheme();
-
+const SignUpForm = ({ theme }) => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
