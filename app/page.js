@@ -20,7 +20,7 @@ import {
   deleteDoc,
   getDoc,
 } from "firebase/firestore";
-import PrimarySearchPantryAppBar from "./components/PantryAppBar";
+import PrimarySearchPantryAppBar from "./components/AppBars/PantryAppBar";
 import ThemeContextProvider from "./theme/ThemeContextProvider";
 
 const style = {
