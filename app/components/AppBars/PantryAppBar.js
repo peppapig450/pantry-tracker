@@ -14,7 +14,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import { ThemeSwitcherButton, ThemeSwitcherMenuItem } from "./ThemeSwitcher";
+import { ThemeSwitcherButton, ThemeSwitcherMenuItem } from "../ThemeSwitcher";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
