@@ -92,7 +92,7 @@ const SignUpForm = ({ theme }) => {
       textAlign="center"
     >
       <Typography variant="h4" component={"h1"} gutterBottom>
-        SignUp
+        Sign Up
       </Typography>
       <Box component="form" onSubmit={handleSignUp} noValidate sx={{ mt: 1 }}>
         <TextField
