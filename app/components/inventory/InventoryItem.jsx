@@ -8,6 +8,7 @@ import {
   Box,
   Badge,
   useTheme,
+  Icon,
 } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -46,7 +47,7 @@ const InventoryItem = ({
         <Typography
           variant="body1"
           fontWeight="bold"
-          color={theme.palette.getContrastText}
+          color={theme.palette.text.primary}
         >
           {name}
         </Typography>
@@ -56,6 +57,7 @@ const InventoryItem = ({
           sx={{
             color: theme.palette.action.active,
             display: "flex",
+            alignItems: "center",
             "& > *": {
               marginBottom: 2,
             },
@@ -64,30 +66,48 @@ const InventoryItem = ({
             },
           }}
         >
-          <div>
-            <Badge color="secondary" badgeContent={quantity}>
-              <ShoppingBagIcon />
-            </Badge>
-            <ButtonGroup>
-              <Button
-                aria-label="increase"
-                onClick={onIncrease}
-                color="primary"
-              >
-                <AddCircleOutlineIcon />
-              </Button>
-              <Button
-                aria-label="decrease"
-                onClick={onDecrease}
-                color="secondary"
-              >
-                <RemoveCircleOutlineRoundedIcon />
-              </Button>
-              {/* TODO: keep going and implement the remove button */}
-            </ButtonGroup>
-          </div>
+          <Badge color="secondary" badgeContent={quantity}>
+            <ShoppingBagIcon />
+          </Badge>
+          <ButtonGroup>
+            <Button aria-label="increase" onClick={onIncrease} color="primary">
+              <AddCircleOutlineIcon />
+            </Button>
+            <Button
+              aria-label="decrease"
+              onClick={onDecrease}
+              color="secondary"
+            >
+              <RemoveCircleOutlineRoundedIcon />
+            </Button>
+          </ButtonGroup>
+        </Box>
+      </Grid>
+      <Grid xs={2} container justifyContent="flex-end" alignItems="center">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          <IconButton
+            onClick={onToggleFavorite}
+            color={isFavorite ? "primary" : "default"}
+          >
+            {isFavorite ? <BookmarkAddedIcon /> : <BookmarkAddIcon />}
+          </IconButton>
+          <IconButton
+            onClick={onRemove}
+            color="error"
+            sx={{ marginLeft: "auto" }}
+          >
+            <DeleteForeverIcon />
+          </IconButton>
         </Box>
       </Grid>
     </Grid>
   );
 };
+
+export default InventoryItem;
