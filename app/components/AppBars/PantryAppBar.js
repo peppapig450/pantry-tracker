@@ -183,7 +183,7 @@ export default function PrimarySearchPantryAppBar({
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            Pantry Tracker
+            WasteNotNotWant
           </Typography>
           <Search>
             <SearchIconWrapper>
