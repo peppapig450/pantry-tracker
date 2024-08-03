@@ -3,7 +3,7 @@ import { Fab, useTheme, Tooltip, Box, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 
-const FloatingActionButton = ({ onClick, variant = "add" }) => {
+const PantryFLoatingActionButton = ({ onClick, variant = "add" }) => {
   const theme = useTheme();
 
   return (
@@ -47,3 +47,5 @@ const FloatingActionButton = ({ onClick, variant = "add" }) => {
     </Tooltip>
   );
 };
+
+export default PantryFLoatingActionButton;
