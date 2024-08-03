@@ -23,6 +23,7 @@ const PantryItemDialog = ({ open, onClose, itemToEdit, onSave }) => {
   const [newItemQuantity, setNewItemQuantity] = useState("");
   const [newItemExpiration, setNewItemExpiration] = useState("");
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (itemToEdit) {
       setItemName(itemToEdit.name);
