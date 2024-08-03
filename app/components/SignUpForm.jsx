@@ -7,7 +7,8 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../../firebase";
-import GoogleIcon from "@mui/icons-material/Google";
+import EmailPasswordForm from "./EmailPasswordForm";
+import AuthForm from "./AuthForm";
 
 const SignUpForm = ({ theme }) => {
   const router = useRouter();
@@ -25,21 +26,17 @@ const SignUpForm = ({ theme }) => {
 
     // Additional password strength checks
     if (!/\d/.test(password)) {
-      // check for at least 1 digit
       setError("Password must contain at least one number.");
     }
     if (!/[a-z]/.test(password)) {
-      // Check for at least one lowercase letter
       setError("Password must contain at least one lowercase letter.");
       return;
     }
     if (!/[A-Z]/.test(password)) {
-      // Check for at least one uppercase letter
       setError("Password must contain at least one uppercase letter.");
       return;
     }
     if (!/[!@#$%^&*]/.test(password)) {
-      // Check for at least one special character
       setError("Password must contain at least one special character.");
       return;
     }
@@ -83,104 +80,25 @@ const SignUpForm = ({ theme }) => {
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      minHeight="80vh"
-      textAlign="center"
+    <AuthForm
+      title="Sign Up"
+      handleSubmit={handleSignUp}
+      handleSocialAuth={handleGoogleSignUp}
+      socialAuthText="Sign Up with Google"
+      switchAuthText="Already have an account? Sign in"
+      handleSwitchAuth={handleSignIn}
+      error={error}
+      theme={theme}
     >
-      <Typography variant="h4" component={"h1"} gutterBottom>
-        Sign Up
-      </Typography>
-      <Box component="form" onSubmit={handleSignUp} noValidate sx={{ mt: 1 }}>
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="email"
-          label="Email Address"
-          name="email"
-          autoComplete="email"
-          autoFocus
-          variant="outlined"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          InputLabelProps={{ style: { color: theme.palette.text.primary } }}
-          InputProps={{
-            style: { color: theme.palette.text.primary },
-            sx: {
-              "& .MuiOutlinedInput-notchedOutline": {
-                borderColor: theme.palette.secondary.main,
-              },
-              "&:hover .MuiOutlinedInput-notchedOutline": {
-                borderColor: theme.palette.text.primary,
-              },
-              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                borderColor: theme.palette.text.primary,
-              },
-            },
-          }}
-        />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          name="password"
-          label="Password"
-          type="password"
-          id="password"
-          autoComplete="new-password"
-          variant="outlined"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          InputLabelProps={{ style: { color: theme.palette.text.primary } }}
-          InputProps={{
-            style: { color: theme.palette.text.primary },
-            sx: {
-              "& .MuiOutlinedInput-notchedOutline": {
-                borderColor: theme.palette.secondary.main,
-              },
-              "&:hover .MuiOutlinedInput-notchedOutline": {
-                borderColor: theme.palette.text.primary,
-              },
-              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                borderColor: theme.palette.text.primary,
-              },
-            },
-          }}
-        />
-        {error && <Typography color="error">{error}</Typography>}
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="secondary"
-          sx={{ mt: 3, mb: 2 }}
-        >
-          Sign Up
-        </Button>
-        <Button
-          fullWidth
-          variant="text"
-          color="secondary"
-          onClick={handleSignIn}
-        >
-          Already have an account? Sign In
-        </Button>
-        <Button
-          fullWidth
-          variant="contained"
-          color="secondary"
-          onClick={handleGoogleSignUp}
-          sx={{ mt: 2 }}
-          startIcon={<GoogleIcon />}
-        >
-          Sign Up with Google
-        </Button>
-      </Box>
-    </Box>
+      <EmailPasswordForm
+        email={email}
+        setEmail={setEmail}
+        password={password}
+        setPassword={setPassword}
+        error={error}
+        theme={theme}
+      />
+    </AuthForm>
   );
 };
 
