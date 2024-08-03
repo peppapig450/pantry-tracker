@@ -4,7 +4,7 @@ import { ThemeContextProvider } from "./theme/ThemeContextProvider";
 export const metadata = {
   title: "Pantry Pal",
   description:
-    "Take control of your pantry with PantryPal! Easily track your food items, set expiration dates, and create shopping lists. Our intuitive interface makes pantry management a breeze. Use PantryPal today and enjoy a well-organized kitchen!",
+    "Pantry Pal provides a user friendly, minimal interface to easily manage your pantry and keep track of what you have and what you need!",
 };
 
 export default function RootLayout({ children }) {
