@@ -2,9 +2,9 @@ import "./globals.css";
 import { ThemeContextProvider } from "./theme/ThemeContextProvider";
 
 export const metadata = {
-  title: "Pantry Pal",
+  title: "WasteNotNotWant",
   description:
-    "Pantry Pal provides a user friendly, minimal interface to easily manage your pantry and keep track of what you have and what you need!",
+    "WasteNotWantNot provides a user friendly, minimal interface to easily manage your pantry and keep track of what you have and what you need!",
 };
 
 export default function RootLayout({ children }) {
