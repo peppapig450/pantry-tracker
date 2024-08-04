@@ -7,12 +7,15 @@ import { useTheme } from "@mui/material";
 
 const SignInPage = () => {
   const theme = useTheme();
-  <>
-    <BaseAppBar theme={theme} />
-    <Container maxWidth="xs">
-      <SignInForm theme={theme} />
-    </Container>
-  </>;
+
+  return (
+    <>
+      <BaseAppBar theme={theme} />
+      <Container maxWidth="xs">
+        <SignInForm theme={theme} />
+      </Container>
+    </>
+  );
 };
 
 export default SignInPage;

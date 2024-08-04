@@ -4,15 +4,19 @@ import { Container, Typography, AppBar, Toolbar } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import SignUpForm from "../components/SignUpForm";
 import BaseAppBar from "../components/AppBars/BaseAppBar";
+import { ThemeContextProvider } from "../theme/ThemeContextProvider";
 
 const SignUpPage = () => {
   const theme = useTheme();
-  <>
-    <BaseAppBar theme={theme} />
-    <Container maxWidth="xs">
-      <SignUpForm theme={theme} />
-    </Container>
-  </>;
+
+  return (
+    <>
+      <BaseAppBar theme={theme} />
+      <Container maxWidth="xs">
+        <SignUpForm theme={theme} />
+      </Container>
+    </>
+  );
 };
 
 export default SignUpPage;

@@ -1,9 +1,9 @@
 "use client";
 
-import LandingPage from "./pages/landing";
-import SignInPage from "./pages/signin";
-import SignUpPage from "./pages/signup";
-import PantryPage from "./pages/pantry";
+import SignUpPage from "./signup/page";
+import SignInPage from "./signin/page";
+import LandingPage from "./landing/page";
+import PantryPage from "./pantry/page";
 
 import { ThemeContextProvider } from "./theme/ThemeContextProvider";
 import { usePathname } from "next/navigation";
@@ -27,11 +27,7 @@ const Page = () => {
       PageComponent = LandingPage;
   }
 
-  return (
-    <ThemeContextProvider>
-      <PageComponent />
-    </ThemeContextProvider>
-  );
+  return <PageComponent />;
 };
 
 export default Page;
