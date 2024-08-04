@@ -12,7 +12,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <ThemeContextProvider>
-          <Analytics>{children}</Analytics>
+          {children}
+          <Analytics />
         </ThemeContextProvider>
       </body>
     </html>
