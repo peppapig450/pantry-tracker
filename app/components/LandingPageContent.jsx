@@ -24,7 +24,7 @@ const LandingPageContent = ({ handleSignIn, theme }) => {
         <Typography variant="h3" component="h1" gutterBottom>
           Welcome to WasteNotNotWant!
         </Typography>
-        <Typography variant="h5" component="h2" gutterButtom>
+        <Typography variant="h5" component="h2" gutterBottom>
           The ultimate pantry management utility.
         </Typography>
         <Typography variant="body1" paragraph>
@@ -56,7 +56,6 @@ const LandingPageContent = ({ handleSignIn, theme }) => {
             target="_blank"
             rel="noopener"
             underline="none"
-            sx={{ color: theme.palette.secondary.main, margin: "0 1rem" }}
           >
             <PublicIcon />
           </Link>
@@ -66,7 +65,6 @@ const LandingPageContent = ({ handleSignIn, theme }) => {
             target="_blank"
             rel="noopener"
             underline="none"
-            sx={{ color: theme.palette.secondary.main, margin: "0 1rem" }}
           >
             <GitHubIcon />
           </Link>
@@ -76,7 +74,6 @@ const LandingPageContent = ({ handleSignIn, theme }) => {
             target="_blank"
             rel="noopener"
             underline="none"
-            sx={{ color: theme.palette.secondary.main, margin: "0 1rem" }}
           >
             <LinkedInIcon />
           </Link>
