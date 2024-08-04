@@ -6,43 +6,53 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Paper,
   IconButton,
   useTheme,
 } from "@mui/material";
-import { Edit, Delete } from "@mui/icons-material";
+import { Delete as DeleteIcon, Edit as EditIcon } from "@mui/icons-material";
+import { usePantry } from "./PantryContext";
 
-const PantryItemTable = ({ items, startEditing, deleteItem }) => {
+const PantryItemTable = ({ searchQuery, openEditDialog }) => {
+  const { pantryItems, deleteItem } = usePantry();
+
   const theme = useTheme();
 
-  <TableContainer sx={{ maxHeight: 350, overflowY: "auto" }}>
-    <Table stickyHeader>
-      <TableHead>
-        <TableRow>
-          <TableCell>Name</TableCell>
-          <TableCell>Quantity</TableCell>
-          <TableCell>Expiration</TableCell>
-          <TableCell>Actions</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {items.map((item) => (
-          <TableRow key={item.id}>
-            <TableCell>{item.name}</TableCell>
-            <TableCell>{item.quantity}</TableCell>
-            <TableCell>{item.expiration}</TableCell>
-            <TableCell>
-              <IconButton onClick={() => startEditing(item)}>
-                <Edit color="primary" />
-              </IconButton>
-              <IconButton onClick={() => deleteItem(item.id)}>
-                <Delete color="error" />
-              </IconButton>
-            </TableCell>
+  const filteredItems = pantryItems.filter((item) =>
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <TableContainer component={Paper}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell>Quantity</TableCell>
+            <TableCell>Expiration</TableCell>
+            <TableCell align="right">Actions</TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </TableContainer>;
+        </TableHead>
+        <TableBody>
+          {filteredItems.map((item) => (
+            <TableRow key={item.id}>
+              <TableCell>{item.name}</TableCell>
+              <TableCell>{item.quantity}</TableCell>
+              <TableCell>{item.expiration}</TableCell>
+              <TableCell align="right">
+                <IconButton onClick={() => openEditDialog(item)}>
+                  <EditIcon color="primary" />
+                </IconButton>
+                <IconButton onClick={() => deleteItem(item.id)}>
+                  <DeleteIcon color="error" />
+                </IconButton>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
 };
 
 export default PantryItemTable;
