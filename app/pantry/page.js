@@ -6,7 +6,7 @@ import PrimarySearchPantryAppBar from "../components/app-level/AppBars/PantryApp
 import FloatingActionButton from "../components/pages/Pantry/PantryFloatingActionButton";
 import PantryItemDialog from "../components/pages/Pantry/PantryItemDialog";
 import PantryItemTable from "../components/pages/Pantry/PantryItemTable";
-import withAuth from "../components/withAuth";
+import withAuth from "../components/app-level/withAuth";
 import { ThemeContextProvider } from "../theme/ThemeContextProvider";
 
 const Page = () => {
