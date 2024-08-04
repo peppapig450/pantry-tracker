@@ -9,7 +9,7 @@ const AuthForm = ({
   handleSubmit,
   handleSocialAuth,
   socialAuthText,
-  switchSocialAuth,
+  handleSwitchAuth,
   error,
   theme,
 }) => (
@@ -41,7 +41,7 @@ const AuthForm = ({
         color="secondary"
         onClick={handleSwitchAuth}
       >
-        {switchSocialAuth}
+        Don&apos;t have an account? Sign Up
       </Button>
     </Box>
   </Box>

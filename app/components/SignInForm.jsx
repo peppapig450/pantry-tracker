@@ -42,6 +42,10 @@ const SignInForm = ({ theme }) => {
     }
   };
 
+  const handleSignUp = () => {
+    router.push("/signup");
+  };
+
   // TODO: maybe move into the EmailPasswordForm
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
