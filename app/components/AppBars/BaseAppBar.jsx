@@ -19,7 +19,7 @@ const BaseAppBar = ({ theme }) => {
   };
 
   return (
-    <AppBar position="static" color={theme.palette.primary.main}>
+    <AppBar position="static">
       <Toolbar>
         <Typography
           variant="h6"
@@ -41,7 +41,7 @@ const BaseAppBar = ({ theme }) => {
           </IconButton>
           <Menu
             id="menu-appbar"
-            anchorel={anchorEl}
+            anchorEl={anchorEl}
             anchorOrigin={{
               vertical: "top",
               horizontal: "right",

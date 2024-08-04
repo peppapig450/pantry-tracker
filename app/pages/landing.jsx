@@ -14,7 +14,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <BaseAppBar />
+      <BaseAppBar theme={theme} />
       <LandingPageContent handleSignIn={handleSignIn} theme={theme} />
     </>
   );
