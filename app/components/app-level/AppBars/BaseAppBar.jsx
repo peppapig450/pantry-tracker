@@ -5,10 +5,7 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import {
-  ThemeSwitcherButton,
-  ThemeSwitcherMenuItem,
-} from "../../ThemeSwitcher";
+import { ThemeSwitcherButton, ThemeSwitcherMenuItem } from "../ThemeSwitcher";
 
 const BaseAppBar = ({ theme }) => {
   const [anchorEl, setAnchorEl] = useState(null);
