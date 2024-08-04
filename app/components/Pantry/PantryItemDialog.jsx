@@ -39,7 +39,7 @@ const PantryItemDialog = ({ open, handleClose, item, isEdit }) => {
   return (
     <Dialog
       open={open}
-      onClose={onClose}
+      onClose={handleClose}
       sx={{
         "&.MuiDialog-paper": {
           padding: theme.spacing(2),
@@ -104,10 +104,10 @@ const PantryItemDialog = ({ open, handleClose, item, isEdit }) => {
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color={theme.palette.primary.main}>
+        <Button onClick={handleClose} color="error">
           Cancel
         </Button>
-        <Button onClick={handleSave} color={theme.palette.primary.main}>
+        <Button onClick={handleSave} color="primary">
           Save
         </Button>
       </DialogActions>
