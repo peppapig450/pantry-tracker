@@ -2,6 +2,7 @@ import React from "react";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import { styled } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 
 const StyledFab = styled(Fab)(({ theme }) => ({
   position: "fixed",
@@ -10,8 +11,10 @@ const StyledFab = styled(Fab)(({ theme }) => ({
 }));
 
 const FloatingActionButton = ({ onClick }) => {
+  const theme = useTheme();
+
   return (
-    <StyledFab color="primary" aria-label="add" onClick={onClick}>
+    <StyledFab theme={theme} aria-label="add" onClick={onClick}>
       <AddIcon />
     </StyledFab>
   );
