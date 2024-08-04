@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { PantryProvider } from "../components/Pantry/PantryContext";
-import PrimarySearchPantryAppBar from "../components/AppBars/PantryAppBar";
+import PrimarySearchPantryAppBar from "../components/app-level/AppBars/PantryAppBar";
 import FloatingActionButton from "../components/Pantry/PantryFloatingActionButton";
 import PantryItemDialog from "../components/Pantry/PantryItemDialog";
 import PantryItemTable from "../components/Pantry/PantryItemTable";

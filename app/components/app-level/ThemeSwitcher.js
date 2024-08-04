@@ -6,7 +6,7 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import Typography from "@mui/material/Typography";
 
-import { ThemeContext } from "../theme/ThemeContextProvider";
+import { ThemeContext } from "../../theme/ThemeContextProvider";
 
 // ThemeSwitcher button component to handle switching the theme
 const ThemeSwitcherButton = () => {

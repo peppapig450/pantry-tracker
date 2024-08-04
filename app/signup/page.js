@@ -3,7 +3,7 @@
 import { Container, Typography, AppBar, Toolbar } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import SignUpForm from "../components/SignUpForm";
-import BaseAppBar from "../components/AppBars/BaseAppBar";
+import BaseAppBar from "../components/app-level/AppBars/BaseAppBar";
 import { ThemeContextProvider } from "../theme/ThemeContextProvider";
 
 const SignUpPage = () => {

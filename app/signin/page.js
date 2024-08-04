@@ -2,7 +2,7 @@
 
 import { Container } from "@mui/material";
 import SignInForm from "../components/SignInForm";
-import BaseAppBar from "../components/AppBars/BaseAppBar";
+import BaseAppBar from "../components/app-level/AppBars/BaseAppBar";
 import { useTheme } from "@mui/material";
 
 const SignInPage = () => {
