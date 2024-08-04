@@ -54,4 +54,4 @@ const Page = () => {
   );
 };
 
-export default withAuth(PantryPage);
+export default withAuth(Page);

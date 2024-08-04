@@ -2,7 +2,7 @@ import "./globals.css";
 import { ThemeContextProvider } from "./theme/ThemeContextProvider";
 
 export const metadata = {
-  title: "WasteNotNotWant",
+  title: "WasteNotWantNot",
   description:
     "WasteNotWantNot provides a user friendly, minimal interface to easily manage your pantry and keep track of what you have and what you need!",
 };
