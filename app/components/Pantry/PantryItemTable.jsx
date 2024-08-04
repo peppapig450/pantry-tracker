@@ -40,11 +40,14 @@ const PantryItemTable = ({ searchQuery, openEditDialog }) => {
               <TableCell>{item.quantity}</TableCell>
               <TableCell>{item.expiration}</TableCell>
               <TableCell align="right">
-                <IconButton onClick={() => openEditDialog(item)}>
-                  <EditIcon color="primary" />
+                <IconButton
+                  onClick={() => openEditDialog(item)}
+                  color="primary"
+                >
+                  <EditIcon />
                 </IconButton>
-                <IconButton onClick={() => deleteItem(item.id)}>
-                  <DeleteIcon color="error" />
+                <IconButton onClick={() => deleteItem(item.id)} color="error">
+                  <DeleteIcon />
                 </IconButton>
               </TableCell>
             </TableRow>
