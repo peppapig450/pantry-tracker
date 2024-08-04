@@ -10,7 +10,8 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import PublicIcon from "@mui/icons-material/Public";
 
-const LandingPageContent = ({ handleSignIn, theme }) => {
+const LandingPageContent = ({ handleSignIn }) => {
+  const theme = useTheme();
   return (
     <Container maxWidth="md">
       <Box
@@ -34,7 +35,7 @@ const LandingPageContent = ({ handleSignIn, theme }) => {
         </Typography>
         <Button
           variant="contained"
-          color={theme.palette.secondary.main}
+          color="secondary"
           onClick={handleSignIn}
           sx={{ mt: 4 }}
         >
