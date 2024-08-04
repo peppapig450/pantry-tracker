@@ -1,5 +1,6 @@
-import "./globals.css";
 import { ThemeContextProvider } from "./theme/ThemeContextProvider";
+import useLoading from "./hooks/useLoading";
+import Loading from "./components/pages/Loading";
 
 export const metadata = {
   title: "WasteNotWantNot",
@@ -8,10 +9,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const loading = useLoading();
+
   return (
     <html lang="en">
       <body>
-        <ThemeContextProvider>{children}</ThemeContextProvider>
+        <ThemeContextProvider>
+          {loading && <Loading />}
+          {children}
+        </ThemeContextProvider>
       </body>
     </html>
   );
