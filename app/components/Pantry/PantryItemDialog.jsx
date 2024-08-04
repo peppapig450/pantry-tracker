@@ -1,45 +1,39 @@
 import React, { useState, useEffect } from "react";
 import {
   Dialog,
-  DialogTitle,
-  DialogContent,
   DialogActions,
-  Button,
+  DialogContent,
+  DialogTitle,
   TextField,
-  Typography,
-  Box,
-  CircularProgress,
+  Button,
+  Grid,
   useTheme,
 } from "@mui/material";
-import { Edit } from "@mui/icons-material";
-import { doc, setDoc, getDoc } from "firebase/firestore";
-import { firestore } from "@/firebase";
+import { usePantry } from "./PantryContext";
 
-const PantryItemDialog = ({ open, onClose, itemToEdit, onSave }) => {
+const PantryItemDialog = ({ open, handleClose, item, isEdit }) => {
   const theme = useTheme();
+  const { addItem, editItem } = usePantry();
 
-  // Local state for form inputs
-  const [newItemName, newSetItemName] = useState("");
-  const [newItemQuantity, setNewItemQuantity] = useState("");
-  const [newItemExpiration, setNewItemExpiration] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [name, setName] = useState(item?.name || "");
+  const [quantity, setQuantity] = useState(item?.quantity || 1);
+  const [expiration, setExpiration] = useState(item?.expiration || "");
 
   useEffect(() => {
-    if (itemToEdit) {
-      setItemName(itemToEdit.name);
-      setItemQuantity(itemToEdit.quantity);
-      setItemExpiration(itemToEdit.expiration);
+    if (item) {
+      setName(item.name);
+      setQuantity(item.quantity);
+      setExpiration(item.expiration);
     }
-  }, [itemToEdit]);
+  }, [item]);
 
   const handleSave = async () => {
-    setLoading(true);
-    try {
-      await onSave(itemName, itemQuantity, itemExpiration);
-      onClose();
-    } finally {
-      setLoading(false);
+    if (isEdit) {
+      await editItem(item.id, name, quantity, expiration);
+    } else {
+      await addItem(name, quantity, expiration);
     }
+    handleClose();
   };
 
   return (
@@ -63,146 +57,58 @@ const PantryItemDialog = ({ open, onClose, itemToEdit, onSave }) => {
           borderTopRightRadius: "8px",
         }}
       >
-        {editingItem ? "Edit Pantry Item" : "Add Pantry Item"}
+        {isEdit ? "Edit Item" : "Add Item"}
       </DialogTitle>
-      <DialogContent
-        sx={(theme) => ({
-          padding: theme.spacing(2),
-        })}
-      >
-        <Box
-          component="form"
-          sx={(theme) => ({
-            display: "flex",
-            flexDirection: "column",
-            gap: theme.spacing(2),
-          })}
-        >
-          <Typography
-            variant="body1"
-            sx={(theme) => ({
-              color: theme.palette.text.primary,
-            })}
-          >
-            Name
-          </Typography>
-          <TextField
-            placeholder="Enter item name"
-            fullWidth
-            value={itemName}
-            onChange={(e) => setItemName(e.target.value)}
-            sx={(theme) => ({
-              borderRadius: theme.shape.borderRadius,
-              "& .MuiOutlinedInput-root": {
-                borderRadius: theme.shape.borderRadius,
-                "& fieldset": {
-                  borderColor: theme.palette.divider,
-                },
-                "&:hover fieldset": {
-                  borderColor: theme.palette.primary.main,
-                },
-                "&.Mui-focused fieldset": {
-                  borderColor: theme.palette.primary.main,
-                },
-              },
-            })}
-          />
-          <Typography
-            variant="body1"
-            sx={(theme) => ({
-              color: theme.palette.text.primary,
-            })}
-          >
-            Quantity
-          </Typography>
-          <TextField
-            type="number"
-            placeholder="Enter quantity"
-            fullWidth
-            value={itemQuantity}
-            onChange={(e) => setItemQuantity(e.target.value)}
-            sx={(theme) => ({
-              borderRadius: theme.shape.borderRadius,
-              "& .MuiOutlinedInput-root": {
-                borderRadius: theme.shape.borderRadius,
-                "& fieldset": {
-                  borderColor: theme.palette.divider,
-                },
-                "&:hover fieldset": {
-                  borderColor: theme.palette.primary.main,
-                },
-                "&.Mui-focused fieldset": {
-                  borderColor: theme.palette.primary.main,
-                },
-              },
-            })}
-          />
-          <Typography
-            variant="body1"
-            sx={(theme) => ({
-              color: theme.palette.text.primary,
-            })}
-          >
-            Expiration Date
-          </Typography>
-          <TextField
-            type="date"
-            fullWidth
-            value={itemExpiration}
-            onChange={(e) => setItemExpiration(e.target.value)}
-            sx={(theme) => ({
-              borderRadius: theme.shape.borderRadius,
-              "& .MuiOutlinedInput-root": {
-                borderRadius: theme.shape.borderRadius,
-                "& fieldset": {
-                  borderColor: theme.palette.divider,
-                },
-                "&:hover fieldset": {
-                  borderColor: theme.palette.primary.main,
-                },
-                "&.Mui-focused fieldset": {
-                  borderColor: theme.palette.primary.main,
-                },
-              },
-            })}
-          />
-        </Box>
+      <DialogContent>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Item Name"
+              type="text"
+              fullWidth
+              variant="standard"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              margin="dense"
+              id="quantity"
+              label="Quantity"
+              type="number"
+              fullWidth
+              variant="standard"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              margin="dense"
+              id="expiration"
+              label="Expiration Date"
+              type="date"
+              fullWidth
+              variant="standard"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              value={expiration}
+              onChange={(e) => setExpiration(e.target.value)}
+            />
+          </Grid>
+        </Grid>
       </DialogContent>
-      <DialogActions
-        sx={(theme) => ({
-          padding: theme.spacing(1, 2),
-          justifyContent: "space-between",
-        })}
-      >
-        <Button
-          onClick={onClose}
-          sx={(theme) => ({
-            color: theme.palette.text.secondary,
-            "&:hover": {
-              backgroundColor: theme.palette.action.hover,
-            },
-          })}
-        >
+      <DialogActions>
+        <Button onClick={handleClose} color={theme.palette.primary.main}>
           Cancel
         </Button>
-        <Button
-          onClick={handleSave}
-          disabled={loading}
-          variant="contained"
-          color="primary"
-          sx={(theme) => ({
-            borderRadius: theme.shape.borderRadius,
-            "&:hover": {
-              backgroundColor: theme.palette.primary.dark,
-              color: theme.palette.primary.contrastText,
-            },
-            "&:active": {
-              backgroundColor: theme.palette.primary.darker,
-              color: theme.palette.primary.contrastText,
-            },
-          })}
-        >
-          {loading ? <CircularProgress size={24} /> : "Save"}
+        <Button onClick={handleSave} color={theme.palette.primary.main}>
+          Save
         </Button>
       </DialogActions>
     </Dialog>
