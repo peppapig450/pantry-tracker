@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { PantryProvider } from "../components/Pantry/PantryContext";
+import { PantryProvider } from "../components/pages/Pantry/PantryContext";
 import PrimarySearchPantryAppBar from "../components/app-level/AppBars/PantryAppBar";
-import FloatingActionButton from "../components/Pantry/PantryFloatingActionButton";
-import PantryItemDialog from "../components/Pantry/PantryItemDialog";
-import PantryItemTable from "../components/Pantry/PantryItemTable";
+import FloatingActionButton from "../components/pages/Pantry/PantryFloatingActionButton";
+import PantryItemDialog from "../components/pages/Pantry/PantryItemDialog";
+import PantryItemTable from "../components/pages/Pantry/PantryItemTable";
 import withAuth from "../components/withAuth";
 import { ThemeContextProvider } from "../theme/ThemeContextProvider";
 
