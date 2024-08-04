@@ -30,7 +30,7 @@ const BaseAppBar = ({ theme }) => {
         </Typography>
         <div>
           <IconButton
-            edge="edge"
+            edge="end"
             color="inherit"
             aria-label="menu"
             aria-controls="menu-appbar"
