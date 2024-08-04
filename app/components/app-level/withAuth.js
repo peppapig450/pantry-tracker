@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { auth } from "../../firebase";
+import { auth } from "@/app/lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { Box, CircularProgress } from "@mui/material";
 

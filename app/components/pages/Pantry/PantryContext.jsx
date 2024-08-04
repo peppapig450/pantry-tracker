@@ -14,7 +14,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { db, auth } from "@/firebase";
+import { db, auth } from "@/app/lib/firebase";
 import { useRouter } from "next/navigation";
 
 const PantryContext = createContext();
