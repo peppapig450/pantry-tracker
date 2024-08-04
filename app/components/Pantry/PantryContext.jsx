@@ -14,7 +14,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-import { firestore, auth } from "@/firebase";
+import { db, auth } from "@/firebase";
 
 const PantryContext = createContext();
 
@@ -36,14 +36,13 @@ export const PantryProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
+  const getUserPantryRef = (userUid) => {
+    return collection(db, `users/${userUid}/pantry`);
+  };
+
   const updatePantry = useCallback(async () => {
     if (userUid) {
-      const userPantryRef = collection(
-        firestore,
-        "pantry-items",
-        userUid,
-        "items"
-      );
+      const userPantryRef = getUserPantryRef(userUid);
       const querySnapshot = await getDocs(userPantryRef);
       const pantryList = [];
       querySnapshot.forEach((doc) => {
@@ -61,12 +60,7 @@ export const PantryProvider = ({ children }) => {
 
   const addItem = async (name, quantity, expiration) => {
     if (userUid) {
-      const userPantryRef = collection(
-        firestore,
-        "pantry-items",
-        userUid,
-        "items"
-      );
+      const userPantryRef = getUserPantryRef(userUid);
       const itemRef = doc(userPantryRef, name);
       const docSnap = await getDoc(itemRef);
       if (docSnap.exists()) {
@@ -89,12 +83,7 @@ export const PantryProvider = ({ children }) => {
 
   const editItem = async (id, name, quantity, expiration) => {
     if (userUid) {
-      const userPantryRef = collection(
-        firestore,
-        "pantry-items",
-        userUid,
-        "items"
-      );
+      const userPantryRef = getUserPantryRef(userUid);
       const itemRef = doc(userPantryRef, id);
       await setDoc(
         itemRef,
@@ -107,12 +96,7 @@ export const PantryProvider = ({ children }) => {
 
   const deleteItem = async (id) => {
     if (userUid) {
-      const userPantryRef = collection(
-        firestore,
-        "pantry-items",
-        userUid,
-        "items"
-      );
+      const userPantryRef = getUserPantryRef(userUid);
       const itemRef = doc(userPantryRef, id);
       await deleteDoc(itemRef);
       await updatePantry();
