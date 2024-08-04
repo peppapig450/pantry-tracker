@@ -14,7 +14,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import { ThemeSwitcherButton, ThemeSwitcherMenuItem } from "../ThemeSwitcher";
+import {
+  ThemeSwitcherButton,
+  ThemeSwitcherMenuItem,
+} from "../../ThemeSwitcher";
+import { Tooltip } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -59,6 +63,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchPantryAppBar({
   searchQuery,
   setSearchQuery,
+  userEmail,
+  handleSignOut,
 }) {
   const theme = useTheme();
 
@@ -106,9 +112,9 @@ export default function PrimarySearchPantryAppBar({
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
+      {/* TODO: this theme toggle doesn't work */}
       <MenuItem onClick={handleMenuClose}>Theme Toggle</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
     </Menu>
   );
 
@@ -132,22 +138,6 @@ export default function PrimarySearchPantryAppBar({
       <MenuItem>
         <ThemeSwitcherMenuItem />
       </MenuItem>
-      {/*
-        <MenuItem>
-          <IconButton
-            size="large"
-            aria-label="show 17 new notifications"
-            color="inherit"
-          >
-          // TODO: integrate this with firebase to display notifications for account
-          // Use 17 as a placeholder for now.
-            <Badge badgeContent={17} color="error">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <p>Notifications</p>
-        </MenuItem>
-      */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -198,18 +188,12 @@ export default function PrimarySearchPantryAppBar({
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <Tooltip title={userEmail} arrow>
+              <Typography variant="body1" noWrap>
+                {userEmail}
+              </Typography>
+            </Tooltip>
             <ThemeSwitcherButton />
-            {/* 
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="secondary"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            */}
             <IconButton
               size="large"
               edge="end"

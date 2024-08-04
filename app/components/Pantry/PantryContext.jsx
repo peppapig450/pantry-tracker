@@ -13,8 +13,9 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { db, auth } from "@/firebase";
+import { useRouter } from "next/navigation";
 
 const PantryContext = createContext();
 
@@ -24,6 +25,7 @@ export const PantryProvider = ({ children }) => {
   const [pantryItems, setPantryItems] = useState([]);
   const [userEmail, setUserEmail] = useState("");
   const [userUid, setUserUid] = useState("");
+  const router = useRouter();
 
   const getUserPantryRef = (userUid) => {
     return collection(db, `users/${userUid}/pantry`);
@@ -103,6 +105,15 @@ export const PantryProvider = ({ children }) => {
     }
   };
 
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      router.push("/");
+    } catch (error) {
+      console.error("Failed to sign out:", error);
+    }
+  };
+
   return (
     <PantryContext.Provider
       value={{
@@ -112,6 +123,7 @@ export const PantryProvider = ({ children }) => {
         deleteItem,
         userEmail,
         userUid,
+        handleSignOut,
       }}
     >
       {children}
