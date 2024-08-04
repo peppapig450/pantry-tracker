@@ -22,13 +22,13 @@ const LandingPageContent = ({ handleSignIn, theme }) => {
         textAlign="center"
       >
         <Typography variant="h3" component="h1" gutterBottom>
-          Welcome to WasteNotNotWant!
+          Welcome to WasteNotWantNot!
         </Typography>
         <Typography variant="h5" component="h2" gutterBottom>
           The ultimate pantry management utility.
         </Typography>
         <Typography variant="body1" paragraph>
-          Always know what&#39;s in your pantry with WasteNotNotWant. This easy
+          Always know what&#39;s in your pantry with WasteNotWantNot. This easy
           to use tool allows you to manage your pantry easily and efficiently,
           ensuring you never run out of the items you need.
         </Typography>

@@ -26,7 +26,7 @@ const BaseAppBar = ({ theme }) => {
           color={theme.palette.primary.contrastText}
           sx={{ flexGrow: 1 }}
         >
-          WasteNotNotWant
+          WasteNotWantNot
         </Typography>
         <div>
           <IconButton
