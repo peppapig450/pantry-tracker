@@ -1,5 +1,6 @@
 import { ThemeContextProvider } from "./theme/ThemeContextProvider";
 import useLoading from "./hooks/useLoading";
+import { Analytics } from "@vercel/analytics/react";
 import Loading from "./components/pages/Loading";
 
 export const metadata = {
@@ -15,8 +16,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <ThemeContextProvider>
-          {loading && <Loading />}
-          {children}
+          <Analytics>
+            {loading && <Loading />}
+            {children}
+          </Analytics>
         </ThemeContextProvider>
       </body>
     </html>
