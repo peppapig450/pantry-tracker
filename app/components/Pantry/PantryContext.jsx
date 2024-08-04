@@ -25,6 +25,10 @@ export const PantryProvider = ({ children }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userUid, setUserUid] = useState("");
 
+  const getUserPantryRef = (userUid) => {
+    return collection(db, `users/${userUid}/pantry`);
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -35,10 +39,6 @@ export const PantryProvider = ({ children }) => {
 
     return () => unsubscribe();
   }, []);
-
-  const getUserPantryRef = (userUid) => {
-    return collection(db, `users/${userUid}/pantry`);
-  };
 
   const updatePantry = useCallback(async () => {
     if (userUid) {
