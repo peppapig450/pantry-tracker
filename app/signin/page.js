@@ -1,7 +1,7 @@
 "use client";
 
 import { Container } from "@mui/material";
-import SignInForm from "../components/SignInForm";
+import SignInForm from "../components/forms/SignInForm";
 import BaseAppBar from "../components/app-level/AppBars/BaseAppBar";
 import { useTheme } from "@mui/material";
 

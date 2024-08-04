@@ -2,7 +2,7 @@
 
 import { Container, Typography, AppBar, Toolbar } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import SignUpForm from "../components/SignUpForm";
+import SignUpForm from "../components/forms/SignUpForm";
 import BaseAppBar from "../components/app-level/AppBars/BaseAppBar";
 import { ThemeContextProvider } from "../theme/ThemeContextProvider";
 
