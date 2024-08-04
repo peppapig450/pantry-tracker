@@ -41,7 +41,7 @@ const AuthForm = ({
         color="secondary"
         onClick={handleSwitchAuth}
       >
-        {switchAuthText}
+        {switchSocialAuth}
       </Button>
     </Box>
   </Box>
