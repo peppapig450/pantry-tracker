@@ -1,7 +1,5 @@
 import { ThemeContextProvider } from "./theme/ThemeContextProvider";
-import useLoading from "./hooks/useLoading";
 import { Analytics } from "@vercel/analytics/react";
-import Loading from "./components/pages/Loading";
 
 export const metadata = {
   title: "WasteNotWantNot",
@@ -10,16 +8,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const loading = useLoading();
-
   return (
     <html lang="en">
       <body>
         <ThemeContextProvider>
-          <Analytics>
-            {loading && <Loading />}
-            {children}
-          </Analytics>
+          <Analytics>{children}</Analytics>
         </ThemeContextProvider>
       </body>
     </html>
