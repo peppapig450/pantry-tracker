@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
+import {
+  Box,
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Menu,
+} from "@mui/material";
+
 import MenuIcon from "@mui/icons-material/Menu";
 import { ThemeSwitcherButton, ThemeSwitcherMenuItem } from "../ThemeSwitcher";
 
@@ -19,7 +23,7 @@ const BaseAppBar = ({ theme }) => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" component="nav">
       <Toolbar>
         <Typography
           variant="h6"
@@ -28,7 +32,13 @@ const BaseAppBar = ({ theme }) => {
         >
           WasteNotWantNot
         </Typography>
-        <div>
+        <Box
+          sx={{
+            display: { sm: "flex", md: "none" },
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
           <IconButton
             edge="end"
             color="inherit"
@@ -56,8 +66,16 @@ const BaseAppBar = ({ theme }) => {
           >
             <ThemeSwitcherMenuItem />
           </Menu>
-        </div>
-        <ThemeSwitcherButton />
+        </Box>
+        <Box
+          sx={{
+            display: { xs: "none", md: "flex" },
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
+          <ThemeSwitcherButton />
+        </Box>
       </Toolbar>
     </AppBar>
   );
