@@ -150,7 +150,7 @@ export default function PrimarySearchPantryAppBar({
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" component="nav">
         <Toolbar>
           {/* hamburger menu on the far left */}
           <IconButton
