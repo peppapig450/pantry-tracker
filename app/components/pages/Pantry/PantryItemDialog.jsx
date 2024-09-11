@@ -40,12 +40,10 @@ const PantryItemDialog = ({ open, handleClose, item, isEdit }) => {
     <Dialog
       open={open}
       onClose={handleClose}
-      sx={{
-        "&.MuiDialog-paper": {
-          padding: theme.spacing(2),
-          borderRadius: "8px",
-          boxShadow: theme.shadows[5],
-        },
+      PaperProps={{
+        padding: theme.spacing(2),
+        borderRadius: "8px",
+        boxShadow: theme.shadows[5],
       }}
     >
       <DialogTitle
